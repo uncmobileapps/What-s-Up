@@ -8,11 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UMAViewController : UIViewController {
-    
-    BOOL codeChanged;
-    
-    
-}
+@interface UMAViewController : UIViewController
 
 @end
