@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		752196B21665779700F59F68 /* feedInterfaceStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 752196B11665779700F59F68 /* feedInterfaceStoryboard.storyboard */; };
 		8336DA40164C5B1800C53180 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8336DA3F164C5B1800C53180 /* UIKit.framework */; };
 		8336DA42164C5B1800C53180 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8336DA41164C5B1800C53180 /* Foundation.framework */; };
 		8336DA44164C5B1800C53180 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8336DA43164C5B1800C53180 /* CoreGraphics.framework */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		752196B11665779700F59F68 /* feedInterfaceStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = feedInterfaceStoryboard.storyboard; sourceTree = "<group>"; };
 		8336DA3B164C5B1800C53180 /* What's Up.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "What's Up.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8336DA3F164C5B1800C53180 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8336DA41164C5B1800C53180 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -86,6 +88,7 @@
 				8336DA4E164C5B1800C53180 /* UMAAppDelegate.h */,
 				8336DA4F164C5B1800C53180 /* UMAAppDelegate.m */,
 				8336DA57164C5B1800C53180 /* MainStoryboard.storyboard */,
+				752196B11665779700F59F68 /* feedInterfaceStoryboard.storyboard */,
 				8336DA5A164C5B1800C53180 /* UMAViewController.h */,
 				8336DA5B164C5B1800C53180 /* UMAViewController.m */,
 				8336DA46164C5B1800C53180 /* Supporting Files */,
@@ -164,6 +167,7 @@
 				8336DA54164C5B1800C53180 /* Default@2x.png in Resources */,
 				8336DA56164C5B1800C53180 /* Default-568h@2x.png in Resources */,
 				8336DA59164C5B1800C53180 /* MainStoryboard.storyboard in Resources */,
+				752196B21665779700F59F68 /* feedInterfaceStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,6 +296,7 @@
 				8336DA61164C5B1800C53180 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
