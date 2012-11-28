@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		68D6F4AE166691D200A4F09F /* UMATweet.m in Sources */ = {isa = PBXBuildFile; fileRef = 68D6F4AD166691D200A4F09F /* UMATweet.m */; };
+		68D6F4B51666925700A4F09F /* UMALocationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 68D6F4B41666925700A4F09F /* UMALocationService.m */; };
+		68D6F4B91666927F00A4F09F /* UMAFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68D6F4B71666927F00A4F09F /* UMAFeedViewController.m */; };
+		68D6F4C3166692A400A4F09F /* UMAMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68D6F4C1166692A400A4F09F /* UMAMapViewController.m */; };
+		68D6F4CC1666933200A4F09F /* UMATwitterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68D6F4CB1666933200A4F09F /* UMATwitterController.m */; };
+		68D6F50616669E6A00A4F09F /* UMANavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68D6F50516669E6A00A4F09F /* UMANavigationController.m */; };
 		752196B21665779700F59F68 /* feedInterfaceStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 752196B11665779700F59F68 /* feedInterfaceStoryboard.storyboard */; };
 		8336DA40164C5B1800C53180 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8336DA3F164C5B1800C53180 /* UIKit.framework */; };
 		8336DA42164C5B1800C53180 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8336DA41164C5B1800C53180 /* Foundation.framework */; };
@@ -18,10 +24,25 @@
 		8336DA54164C5B1800C53180 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8336DA53164C5B1800C53180 /* Default@2x.png */; };
 		8336DA56164C5B1800C53180 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8336DA55164C5B1800C53180 /* Default-568h@2x.png */; };
 		8336DA59164C5B1800C53180 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8336DA57164C5B1800C53180 /* MainStoryboard.storyboard */; };
-		8336DA5C164C5B1800C53180 /* UMAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8336DA5B164C5B1800C53180 /* UMAViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		68D6F4AC166691D200A4F09F /* UMATweet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMATweet.h; sourceTree = "<group>"; };
+		68D6F4AD166691D200A4F09F /* UMATweet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMATweet.m; sourceTree = "<group>"; };
+		68D6F4B31666925700A4F09F /* UMALocationService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMALocationService.h; sourceTree = "<group>"; };
+		68D6F4B41666925700A4F09F /* UMALocationService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMALocationService.m; sourceTree = "<group>"; };
+		68D6F4B61666927F00A4F09F /* UMAFeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMAFeedViewController.h; sourceTree = "<group>"; };
+		68D6F4B71666927F00A4F09F /* UMAFeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMAFeedViewController.m; sourceTree = "<group>"; };
+		68D6F4C0166692A400A4F09F /* UMAMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMAMapViewController.h; sourceTree = "<group>"; };
+		68D6F4C1166692A400A4F09F /* UMAMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMAMapViewController.m; sourceTree = "<group>"; };
+		68D6F4CA1666933200A4F09F /* UMATwitterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMATwitterController.h; sourceTree = "<group>"; };
+		68D6F4CB1666933200A4F09F /* UMATwitterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMATwitterController.m; sourceTree = "<group>"; };
+		68D6F50416669E6A00A4F09F /* UMANavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMANavigationController.h; sourceTree = "<group>"; };
+		68D6F50516669E6A00A4F09F /* UMANavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMANavigationController.m; sourceTree = "<group>"; };
+		68D6F5071666A02400A4F09F /* UMATwitterAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMATwitterAPI.h; sourceTree = "<group>"; };
+		68D6F5081666A02400A4F09F /* UMATwitterAPI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UMATwitterAPI.m; sourceTree = "<group>"; };
+		68D6F5091666A03600A4F09F /* UMATweetViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMATweetViewController.h; sourceTree = "<group>"; };
+		68D6F50A1666A03600A4F09F /* UMATweetViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UMATweetViewController.m; sourceTree = "<group>"; };
 		752196B11665779700F59F68 /* feedInterfaceStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = feedInterfaceStoryboard.storyboard; sourceTree = "<group>"; };
 		8336DA3B164C5B1800C53180 /* What's Up.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "What's Up.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8336DA3F164C5B1800C53180 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -37,8 +58,6 @@
 		8336DA53164C5B1800C53180 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		8336DA55164C5B1800C53180 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		8336DA58164C5B1800C53180 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		8336DA5A164C5B1800C53180 /* UMAViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMAViewController.h; sourceTree = "<group>"; };
-		8336DA5B164C5B1800C53180 /* UMAViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UMAViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +74,75 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		68D6F4C5166692AC00A4F09F /* Map Interface */ = {
+			isa = PBXGroup;
+			children = (
+				68D6F4C0166692A400A4F09F /* UMAMapViewController.h */,
+				68D6F4C1166692A400A4F09F /* UMAMapViewController.m */,
+			);
+			name = "Map Interface";
+			sourceTree = "<group>";
+		};
+		68D6F4C6166692BB00A4F09F /* Location Services */ = {
+			isa = PBXGroup;
+			children = (
+				68D6F4B31666925700A4F09F /* UMALocationService.h */,
+				68D6F4B41666925700A4F09F /* UMALocationService.m */,
+			);
+			name = "Location Services";
+			sourceTree = "<group>";
+		};
+		68D6F4C7166692CB00A4F09F /* Data Model */ = {
+			isa = PBXGroup;
+			children = (
+				68D6F4AC166691D200A4F09F /* UMATweet.h */,
+				68D6F4AD166691D200A4F09F /* UMATweet.m */,
+				68D6F4CA1666933200A4F09F /* UMATwitterController.h */,
+				68D6F4CB1666933200A4F09F /* UMATwitterController.m */,
+			);
+			name = "Data Model";
+			sourceTree = "<group>";
+		};
+		68D6F4C8166692E000A4F09F /* Feed Interface */ = {
+			isa = PBXGroup;
+			children = (
+				68D6F4B61666927F00A4F09F /* UMAFeedViewController.h */,
+				68D6F4B71666927F00A4F09F /* UMAFeedViewController.m */,
+				68D6F5091666A03600A4F09F /* UMATweetViewController.h */,
+				68D6F50A1666A03600A4F09F /* UMATweetViewController.m */,
+				68D6F50416669E6A00A4F09F /* UMANavigationController.h */,
+				68D6F50516669E6A00A4F09F /* UMANavigationController.m */,
+			);
+			name = "Feed Interface";
+			sourceTree = "<group>";
+		};
+		68D6F4C9166692E900A4F09F /* Twitter API */ = {
+			isa = PBXGroup;
+			children = (
+				68D6F5071666A02400A4F09F /* UMATwitterAPI.h */,
+				68D6F5081666A02400A4F09F /* UMATwitterAPI.m */,
+			);
+			name = "Twitter API";
+			sourceTree = "<group>";
+		};
+		68D6F4CD1666940400A4F09F /* App Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				8336DA4E164C5B1800C53180 /* UMAAppDelegate.h */,
+				8336DA4F164C5B1800C53180 /* UMAAppDelegate.m */,
+			);
+			name = "App Delegate";
+			sourceTree = "<group>";
+		};
+		68D6F4CE1666992100A4F09F /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				8336DA57164C5B1800C53180 /* MainStoryboard.storyboard */,
+				752196B11665779700F59F68 /* feedInterfaceStoryboard.storyboard */,
+			);
+			name = Storyboard;
+			sourceTree = "<group>";
+		};
 		8336DA30164C5B1800C53180 = {
 			isa = PBXGroup;
 			children = (
@@ -85,12 +173,13 @@
 		8336DA45164C5B1800C53180 /* What's Up */ = {
 			isa = PBXGroup;
 			children = (
-				8336DA4E164C5B1800C53180 /* UMAAppDelegate.h */,
-				8336DA4F164C5B1800C53180 /* UMAAppDelegate.m */,
-				8336DA57164C5B1800C53180 /* MainStoryboard.storyboard */,
-				752196B11665779700F59F68 /* feedInterfaceStoryboard.storyboard */,
-				8336DA5A164C5B1800C53180 /* UMAViewController.h */,
-				8336DA5B164C5B1800C53180 /* UMAViewController.m */,
+				68D6F4CE1666992100A4F09F /* Storyboard */,
+				68D6F4CD1666940400A4F09F /* App Delegate */,
+				68D6F4C9166692E900A4F09F /* Twitter API */,
+				68D6F4C8166692E000A4F09F /* Feed Interface */,
+				68D6F4C5166692AC00A4F09F /* Map Interface */,
+				68D6F4C7166692CB00A4F09F /* Data Model */,
+				68D6F4C6166692BB00A4F09F /* Location Services */,
 				8336DA46164C5B1800C53180 /* Supporting Files */,
 			);
 			path = "What's Up";
@@ -180,7 +269,12 @@
 			files = (
 				8336DA4C164C5B1800C53180 /* main.m in Sources */,
 				8336DA50164C5B1800C53180 /* UMAAppDelegate.m in Sources */,
-				8336DA5C164C5B1800C53180 /* UMAViewController.m in Sources */,
+				68D6F4AE166691D200A4F09F /* UMATweet.m in Sources */,
+				68D6F4B51666925700A4F09F /* UMALocationService.m in Sources */,
+				68D6F4B91666927F00A4F09F /* UMAFeedViewController.m in Sources */,
+				68D6F4C3166692A400A4F09F /* UMAMapViewController.m in Sources */,
+				68D6F4CC1666933200A4F09F /* UMATwitterController.m in Sources */,
+				68D6F50616669E6A00A4F09F /* UMANavigationController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
