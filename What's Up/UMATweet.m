@@ -10,4 +10,13 @@
 
 @implementation UMATweet
 
+@synthesize tweetID;
+@synthesize latitude;
+@synthesize longitude;
+@synthesize text;
+@synthesize username;
+@synthesize age;
+@synthesize proximity;
+
+
 @end

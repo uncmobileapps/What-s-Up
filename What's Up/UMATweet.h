@@ -10,4 +10,12 @@
 
 @interface UMATweet : NSObject
 
+@property (nonatomic, strong) NSNumber *tweetID;
+@property (nonatomic, strong) NSNumber *latitude;
+@property (nonatomic, strong) NSNumber *longitude;
+@property (nonatomic, strong) NSString *text;
+@property (nonatomic, strong) NSString *username;
+@property (nonatomic, strong) NSNumber *age;
+@property (nonatomic, strong) NSNumber *proximity;
+
 @end
