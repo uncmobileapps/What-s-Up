@@ -45,11 +45,6 @@ ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:
             //twitter api calls -(void)searchComplete:NSDictionary *dict)
             
             
-            NSString *latitude = 37.781157;
-            NSString *longitude = -122.398720;
-            NSString *radius = 10mi;
-            return latitude, longitude;
-            
             
             //if user has multiple Twitter accounts, use the first one
             ACAccount *twitterAccount = [accounts objectAtIndex:0];
