@@ -13,23 +13,13 @@
 
 @implementation UMATwitterAPI
 
-//method for getting location-based query via core location data
-
--findLocation{
-    
-    
-    
-}
-
-
-
+//for the data model
 - (void)searchTwitterWithLatitude:(float)latitude
                         longitude:(float)longitude
                            radius:(float)radius
                          delegate:(UMATwitterController *)receiver {
     
 }
-
 
 
 
@@ -41,10 +31,6 @@ ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:
     if (granted) {
         NSArray *accounts = [accountStore accountsWithAccountType:accountType];
         if (accounts.count) {
-            
-            //twitter api calls -(void)searchComplete:NSDictionary *dict)
-            
-            
             
             //if user has multiple Twitter accounts, use the first one
             ACAccount *twitterAccount = [accounts objectAtIndex:0];
@@ -61,11 +47,14 @@ ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:
             TWRequest *request [[TWRequest alloc] initWithURL: url parameters requestMethod:
                                 TWRequestMethodGET];
             [request setAccount:twitterAccount];
-            [request performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError * error) ] {
-                // handler code
-                //if Twitter responds and we have a value for responseData
+            [request performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError * error) ]
+            
+            
+            // handler code below
+            //if Twitter responds and we have a value for responseData
+            //set dataSource array to the Twitter JSON feed
+            {
                 
-                //set dataSource array to the Twitter JSON feed
                 NSMutableDictionary *statusesDict = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:&error];
                 
                 self.dataSource = [statusesDict objectForKey:@"statuses"];
@@ -75,23 +64,20 @@ ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:
                     
                     NSError *error = nil;
                     searchComplete(statusesDict);
-                }
+                }  //close handler
                 
                 
-                
-                
-                
-                //twitter controller
-            } //end if(responseData)
+            }  //twitter controller
         }]; //end performRequestWithHandler
     } //end if accounts.count
 } //end if granted
+ 
+ 
+                
+ 
  else {
      NSLog(@"The user does not grant us permission to access its Twitter account(s).");
  }
- 
- 
- //separate method for dataModel, i.e., searchComplete, contains dictionary of tweets
  
  
  }]; // end requestAccessToAccountsWithType
