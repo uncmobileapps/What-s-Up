@@ -11,6 +11,7 @@
 @interface UMATwitterController : NSObject
 
 @property (nonatomic, assign) BOOL searchDone;
+@property (nonatomic, strong) NSDictionary * twitterResultDict;
 
 /* This method will return the tweets for a given query in the format that we need for this app.
 

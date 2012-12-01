@@ -8,12 +8,17 @@
 
 #import "UMATwitterController.h"
 #import "UMATweet.h"
+#import "UMATwitterAPI.h"
+#import "UMALocationService.h"
 
 @implementation UMATwitterController
 
-- (void)searchComplete:(NSDictionary*)twitterResultDict {
+@synthesize twitterResultDict;
+
+- (void)searchComplete:(NSDictionary*)statusesDict {
     
     if(twitterResultDict) {
+        twitterResultDict = statusesDict;
         self.searchDone=TRUE;
     }
 }
@@ -24,20 +29,61 @@
     self.searchDone=FALSE;
     
     //get current location coordinates of device from Core Location, and set to deviceLatitude and deviceLongitude
+    UMALocationService *locationService = [[UMALocationService alloc]init];
+    //NSDictionary *deviceLocationDict = [locationService currentLocation];
+    //float *deviceLatitude = [deviceLocationDict objectForKey:@"latitude"];
+    //float *deviceLongitude = [deviceLocationDict objectForKey:@"longitude"];
     
-    float *deviceLatitude;
-    float *deviceLongitude;
+    UMATwitterAPI *twitterAPI = [[UMATwitterAPI alloc] init];
+//    [twitterAPI searchTwitterWithLatitude:deviceLatitude longitude:deviceLongitude radius:10.0 delegate:self];
     
-    //[twitterAPI searchTwitterWithLatitude:deviceLatitude longitude:deviceLongitude radius:10.0 delegate:self];
-    
-    //that search returns an NSDictionary
-    
+    //pause getTweetsArray until it has gotten the statusesDict from TwitterAPI
     while(!self.searchDone) {}
     
-    //parse the nasty NSDictionary from Twitter into distinct UMATweet objects
+    NSArray *tweetsArray = [[NSArray alloc]init];
     
-    //put each UMATweet object into the array
-    NSArray *tweetsArray;
+    //parse the NSDictionary from Twitter into distinct UMATweet objects
+    NSMutableArray *tweetResultsArray = [twitterResultDict objectForKey:@"statuses"];
+    
+    //loop through each tweet dictionary and put relevant info into UMATweet object. Then, load UMATweet objects into array.
+    for(int i=0; i<[tweetResultsArray count]-1; i++) {
+        
+        UMATweet *tweetObject = [[UMATweet alloc]init];
+        
+        /*
+         @property (nonatomic, strong) NSNumber *tweetID;
+         @property (nonatomic, strong) NSNumber *latitude;
+         @property (nonatomic, strong) NSNumber *longitude;
+         @property (nonatomic, strong) NSString *text;
+         @property (nonatomic, strong) NSString *username;
+         @property (nonatomic, strong) NSNumber *age;
+         @property (nonatomic, strong) NSNumber *proximity;
+        */
+        NSDictionary *thisTweet = [tweetResultsArray objectAtIndex:i];
+        tweetObject.tweetID = [NSNumber numberWithLongLong:[thisTweet objectForKey:@"id"]];
+        tweetObject.text = [thisTweet objectForKey:@"text"];
+        tweetObject.username = [[thisTweet objectForKey:@"user"] objectForKey:@"screen_name"];
+        
+        /*
+         
+         INCOMPLETE - check if this tweet has coordinates or if that key is null!
+         
+         */
+        //latitude and longitude are nullable in the tweet result we get from Twitter, so we must check if they exist before trying to access them
+        tweetObject.latitude = [NSNumber numberWithFloat:[[[[thisTweet objectForKey:@"coordinates"] objectForKey:@"coordinates"] objectAtIndex:1]floatValue]];
+        tweetObject.latitude = [NSNumber numberWithFloat:[[[[thisTweet objectForKey:@"coordinates"] objectForKey:@"coordinates"] objectAtIndex:0]floatValue]];
+        
+        //calculate the age of the tweet (how long ago it was tweeted, relative to current time)
+        
+        //        tweetObject.age =
+        
+        //get the proximity of the tweet (how many miles (float) from device location was the tweet sent?)
+//        tweetObject.proximity = [[locationService getProximityInMilesFromDeviceLatitude:deviceLatitude deviceLongitude:deviceLongitude toTweetLatitude:tweetObject.latitude tweetLongitude:tweetObject.longitude] floatValue];
+
+        //add this tweet to the array of all tweets in this results feed
+        [tweetResultsArray addObject:tweetObject];
+
+    } //end for count of tweetResultsArray
     
     return tweetsArray;
 }

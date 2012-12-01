@@ -17,7 +17,7 @@
  text: “I’m at #TopO for my birthday!”
  username: “sammy234”
  age: “93”
- proximity: “1.23 Miles”
+ proximity: “1.23”
 
 Accessing these:
  tweetID: [tweetID numberWithLong:9999999999999999]
