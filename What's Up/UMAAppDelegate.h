@@ -8,7 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UMAAppDelegate : UIResponder <UIApplicationDelegate>
+
+@class UMATwitterController;
+
+@interface UMAAppDelegate : UIResponder <UIApplicationDelegate> {
+    UMATwitterController * _twitterController;
+}
+@property (nonatomic, readonly) UMATwitterController *twitterController;
 
 @property (strong, nonatomic) UIWindow *window;
 

@@ -10,6 +10,7 @@
 
 @implementation UMATweet
 
+
 @synthesize tweetID;
 @synthesize latitude;
 @synthesize longitude;
