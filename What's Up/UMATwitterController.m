@@ -34,7 +34,7 @@
     //float *deviceLatitude = [deviceLocationDict objectForKey:@"latitude"];
     //float *deviceLongitude = [deviceLocationDict objectForKey:@"longitude"];
     
-    UMATwitterAPI *twitterAPI = [[UMATwitterAPI alloc] init];
+//    UMATwitterAPI *twitterAPI = [[UMATwitterAPI alloc] init];
 //    [twitterAPI searchTwitterWithLatitude:deviceLatitude longitude:deviceLongitude radius:10.0 delegate:self];
     
     //pause getTweetsArray until it has gotten the statusesDict from TwitterAPI
@@ -50,15 +50,6 @@
         
         UMATweet *tweetObject = [[UMATweet alloc]init];
         
-        /*
-         @property (nonatomic, strong) NSNumber *tweetID;
-         @property (nonatomic, strong) NSNumber *latitude;
-         @property (nonatomic, strong) NSNumber *longitude;
-         @property (nonatomic, strong) NSString *text;
-         @property (nonatomic, strong) NSString *username;
-         @property (nonatomic, strong) NSNumber *age;
-         @property (nonatomic, strong) NSNumber *proximity;
-        */
         NSDictionary *thisTweet = [tweetResultsArray objectAtIndex:i];
         tweetObject.tweetID = [NSNumber numberWithLongLong:[thisTweet objectForKey:@"id"]];
         tweetObject.text = [thisTweet objectForKey:@"text"];
@@ -68,14 +59,25 @@
          
          INCOMPLETE - check if this tweet has coordinates or if that key is null!
          
+         latitude and longitude are nullable in the tweet result we get from Twitter, so we must check if they exist before trying to access them
          */
-        //latitude and longitude are nullable in the tweet result we get from Twitter, so we must check if they exist before trying to access them
         tweetObject.latitude = [NSNumber numberWithFloat:[[[[thisTweet objectForKey:@"coordinates"] objectForKey:@"coordinates"] objectAtIndex:1]floatValue]];
         tweetObject.latitude = [NSNumber numberWithFloat:[[[[thisTweet objectForKey:@"coordinates"] objectForKey:@"coordinates"] objectAtIndex:0]floatValue]];
         
         //calculate the age of the tweet (how long ago it was tweeted, relative to current time)
+        //Twitter format: "Wed Aug 27 13:08:45 +0000 2008"
         
-        //        tweetObject.age =
+        //set up a date formatter to specify the format
+        NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"EEE LLL d HH:mm:ss Z"];
+        
+        //convert tweet date from string to NSDate
+        NSDate *tweetDate = [dateFormatter dateFromString:[thisTweet objectForKey:@"created_at"]];
+        NSTimeInterval tweetAgeInSeconds = [tweetDate timeIntervalSinceNow];
+        
+        tweetObject.age = [NSNumber numberWithInt:tweetAgeInSeconds];
+        
+        NSLog(@"Tweet Age: %@",tweetObject.age); //NOT SURE IF THIS IS CORRECT
         
         //get the proximity of the tweet (how many miles (float) from device location was the tweet sent?)
 //        tweetObject.proximity = [[locationService getProximityInMilesFromDeviceLatitude:deviceLatitude deviceLongitude:deviceLongitude toTweetLatitude:tweetObject.latitude tweetLongitude:tweetObject.longitude] floatValue];
