@@ -19,4 +19,8 @@
  NSArray *tweets = [twController getTweetsArray];
 */
 - (NSArray*)getTweetsArray;
+
+//UMATwitterAPI calls this within searchTwitterWithLatitude once it gets a result
+- (void)searchComplete:(NSDictionary*)twitterResultDict;
+
 @end

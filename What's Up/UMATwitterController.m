@@ -7,9 +7,18 @@
 //
 
 #import "UMATwitterController.h"
+#import "UMATweet.h"
 
 @implementation UMATwitterController
 
+- (void)searchComplete:(NSDictionary*)twitterResultDict {
+    
+    if(twitterResultDict) {
+        self.searchDone=TRUE;
+    }
+}
+
+//returns array of UMATweet objects
 - (NSArray*)getTweetsArray {
     
     self.searchDone=FALSE;
