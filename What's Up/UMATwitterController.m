@@ -40,50 +40,51 @@
     //pause getTweetsArray until it has gotten the statusesDict from TwitterAPI
     while(!self.searchDone) {}
     
-    NSArray *tweetsArray = [[NSArray alloc]init];
-    
-    //parse the NSDictionary from Twitter into distinct UMATweet objects
+    NSMutableArray *tweetsArray = [[NSArray alloc]init];
     NSMutableArray *tweetResultsArray = [twitterResultDict objectForKey:@"statuses"];
     
-    //loop through each tweet dictionary and put relevant info into UMATweet object. Then, load UMATweet objects into array.
     for(int i=0; i<[tweetResultsArray count]-1; i++) {
         
         UMATweet *tweetObject = [[UMATweet alloc]init];
         
         NSDictionary *thisTweet = [tweetResultsArray objectAtIndex:i];
-        tweetObject.tweetID = [NSNumber numberWithLongLong:[thisTweet objectForKey:@"id"]];
-        tweetObject.text = [thisTweet objectForKey:@"text"];
-        tweetObject.username = [[thisTweet objectForKey:@"user"] objectForKey:@"screen_name"];
+
+        //---------------Latitude and Longitude-----------------------
+        // latitude and longitude are nullable in the tweet result we get from Twitter, so we must check if they exist before trying to access them
         
-        /*
-         
-         INCOMPLETE - check if this tweet has coordinates or if that key is null!
-         
-         latitude and longitude are nullable in the tweet result we get from Twitter, so we must check if they exist before trying to access them
-         */
-        tweetObject.latitude = [NSNumber numberWithFloat:[[[[thisTweet objectForKey:@"coordinates"] objectForKey:@"coordinates"] objectAtIndex:1]floatValue]];
-        tweetObject.latitude = [NSNumber numberWithFloat:[[[[thisTweet objectForKey:@"coordinates"] objectForKey:@"coordinates"] objectAtIndex:0]floatValue]];
+        //NOT SURE IF THIS IS CORRECT
+        if ([[[thisTweet objectForKey:@"coordinates"] objectForKey:@"coordinates"] objectAtIndex:1]) {
+            
+            tweetObject.longitude = [NSNumber numberWithFloat:[[[[thisTweet objectForKey:@"coordinates"] objectForKey:@"coordinates"] objectAtIndex:1]floatValue]];
+            tweetObject.latitude = [NSNumber numberWithFloat:[[[[thisTweet objectForKey:@"coordinates"] objectForKey:@"coordinates"] objectAtIndex:0]floatValue]];
+        }
+        else { //if "coordinates" key is null
+            
+            //do we want to set these to 0 or just not set them?  Implications? 
+            tweetObject.longitude = [NSNumber numberWithFloat:0.0];
+            tweetObject.latitude = [NSNumber numberWithFloat:0.0];
+        }
         
-        //calculate the age of the tweet (how long ago it was tweeted, relative to current time)
-        //Twitter format: "Wed Aug 27 13:08:45 +0000 2008"
-        
-        //set up a date formatter to specify the format
+        //-----------------Tweet Age----------------------------------
         NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+        //    Twitter format: "Wed Aug 27 13:08:45 +0000 2008"
         [dateFormatter setDateFormat:@"EEE LLL d HH:mm:ss Z"];
         
         //convert tweet date from string to NSDate
         NSDate *tweetDate = [dateFormatter dateFromString:[thisTweet objectForKey:@"created_at"]];
         NSTimeInterval tweetAgeInSeconds = [tweetDate timeIntervalSinceNow];
-        
-        tweetObject.age = [NSNumber numberWithInt:tweetAgeInSeconds];
-        
-        NSLog(@"Tweet Age: %@",tweetObject.age); //NOT SURE IF THIS IS CORRECT
-        
-        //get the proximity of the tweet (how many miles (float) from device location was the tweet sent?)
-//        tweetObject.proximity = [[locationService getProximityInMilesFromDeviceLatitude:deviceLatitude deviceLongitude:deviceLongitude toTweetLatitude:tweetObject.latitude tweetLongitude:tweetObject.longitude] floatValue];
+        NSLog(@"Tweet Age: %@",[NSNumber numberWithInt:tweetAgeInSeconds]); //NOT SURE IF THIS IS CORRECT
 
+        //---------------------Set Tweet object properties-----------------------
+        tweetObject.tweetID = [NSNumber numberWithLongLong:[thisTweet objectForKey:@"id"]];
+        tweetObject.text = [thisTweet objectForKey:@"text"];
+        tweetObject.username = [[thisTweet objectForKey:@"user"] objectForKey:@"screen_name"];
+        tweetObject.age = [NSNumber numberWithInt:tweetAgeInSeconds];
+        //        tweetObject.proximity = [[locationService getProximityInMilesFromDeviceLatitude:deviceLatitude deviceLongitude:deviceLongitude toTweetLatitude:tweetObject.latitude tweetLongitude:tweetObject.longitude] floatValue];
+        // latitude and longitude are set above
+        
         //add this tweet to the array of all tweets in this results feed
-        [tweetResultsArray addObject:tweetObject];
+        [tweetsArray addObject:tweetObject];
 
     } //end for count of tweetResultsArray
     
