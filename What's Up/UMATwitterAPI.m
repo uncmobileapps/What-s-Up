@@ -19,68 +19,85 @@
                            radius:(float)radius
                          delegate:(UMATwitterController *)receiver {
     
-}
-
-
-
-ACAccountStore *accountStore = [[ACAccountStore alloc] init];
-ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
-[accountStore requestAccessToAccountsWithType:accountType withCompletionHandler:^(BOOL granted, NSError *error) {
+    // setting values manually for testing
+    latitude = 37.781157f;
+    longitude = -122.398720f;
+    radius = 10.0f;
     
-    //if account authenticates
-    if (granted) {
-        NSArray *accounts = [accountStore accountsWithAccountType:accountType];
-        if (accounts.count) {
-            
-            //if user has multiple Twitter accounts, use the first one
-            ACAccount *twitterAccount = [accounts objectAtIndex:0];
-            NSURL *url = [NSURL URLWithString:@"https://api.twitter.com/1.1/search/tweets.json"];
-            
-            //set search params
-            NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
-            [parameters setObject:queryText forKey:@"q"];
-            [parameters setObject:latitude, longitude, radius forKey:@"geocode"];
-            [parameters setObject:@"5" forKey:@"count"];
-            
-            
-            
-            TWRequest *request [[TWRequest alloc] initWithURL: url parameters requestMethod:
-                                TWRequestMethodGET];
-            [request setAccount:twitterAccount];
-            [request performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError * error) ]
-            
-            
-            // handler code below
-            //if Twitter responds and we have a value for responseData
-            //set dataSource array to the Twitter JSON feed
-            {
+    ACAccountStore *accountStore = [[ACAccountStore alloc] init];
+    ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
+    [accountStore requestAccessToAccountsWithType:accountType withCompletionHandler:^(BOOL granted, NSError *error) {
+        
+        //if account authenticates
+        if (granted) {
+            NSArray *accounts = [accountStore accountsWithAccountType:accountType];
+            if (accounts.count) {
                 
-                NSMutableDictionary *statusesDict = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:&error];
+                //if user has multiple Twitter accounts, use the first one
+                ACAccount *twitterAccount = [accounts objectAtIndex:0];
+                NSURL *url = [NSURL URLWithString:@"https://api.twitter.com/1.1/search/tweets.json"];
                 
-                self.dataSource = [statusesDict objectForKey:@"statuses"];
-                NSLog(@"number of tweets: %d",self.dataSource.count);
+                //piece together the parameter value for the geocode parameter
+                NSString *geoCodeParam = [NSString stringWithFormat:@"%f,%f,%fmi", lat, lon, rad];
                 
-                if(responseData){
+                NSLog(@"%@", geoCodeParam);
+                
+                //set search params
+                NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
+                // [parameters setObject:@"chapel hill" forKey:@"q"];
+                [parameters setObject:geoCodeParam forKey:@"geocode"];
+                // [parameters setObject:@"50" forKey:@"count"];  // by default, we should get 15 results
+                
+                //send search request to Twitter
+                TWRequest *request = [[TWRequest alloc] initWithURL:url parameters:parameters requestMethod:TWRequestMethodGET];
+                [request setAccount:twitterAccount];
+                [request performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
                     
-                    NSError *error = nil;
-                    searchComplete(statusesDict);
-                }  //close handler
-                
-                
-            }  //twitter controller
-        }]; //end performRequestWithHandler
-    } //end if accounts.count
-} //end if granted
- 
- 
-                
- 
- else {
-     NSLog(@"The user does not grant us permission to access its Twitter account(s).");
- }
- 
- 
- }]; // end requestAccessToAccountsWithType
+                    //if Twitter responds and we have a value for responseData
+                    if (responseData) {
+                        NSError *error = nil;
+                        
+                        //set dataSource array to the Twitter JSON feed
+                        NSMutableDictionary *statusesDict = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:&error];
+                        
+                        //self.dataSource = [statusesDict objectForKey:@"statuses"];
+                        // NSLog(@"number of tweets: %d",self.dataSource.count);
+                        // NSLog(@"statusesDict: %@", statusesDict);
+                        
+                        
+                        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:statusesDict
+                                                                           options:NSJSONWritingPrettyPrinted error:&error];
+                        NSString *showmejson = [[NSString alloc] initWithData:jsonData
+                                                                     encoding:NSUTF8StringEncoding];
+                        
+                        NSLog(@"%@", showmejson);
+                        NSLog(@"Number of results: %d", self.dataSource.count);
+                        
+                        /*** Tell data model we're done searching and send results ***/
+                        [receiver.UMATwitterController searchComplete(statusesDict)];
+                    
+                        
+                        // NSJSONWritingPrettyPrinted
+                        
+//                        if (self.dataSource) {
+//                            [self.tableView reloadData];
+                            
+                            //show tableview and hide activityIndicator
+//                            [self.tableView setHidden:NO];
+//                            [self.activityIndicatorView stopAnimating];
+//                        } else {
+//                            NSLog(@"Error %@ with user info %@.", error, error.userInfo);
+                        }
+                    } //end if(responseData)
+                }]; //end performRequestWithHandler
+            } //end if accounts.count
+        } //end if granted
+        else {
+            NSLog(@"The user does not grant us permission to access its Twitter account(s).");
+        }
+    }]; // end requestAccessToAccountsWithType
+
+    
 }
 
 
