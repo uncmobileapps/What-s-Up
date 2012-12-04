@@ -9,6 +9,8 @@
 #import "UMATwitterAPI.h"
 #import "UMALocationService.h"
 #import "UMATwitterController.h"
+#import <Twitter/Twitter.h>
+#import <Accounts/Accounts.h>
 
 
 @implementation UMATwitterAPI
@@ -20,9 +22,9 @@
                          delegate:(UMATwitterController *)receiver {
     
     // setting values manually for testing
-    latitude = 37.781157f;
-    longitude = -122.398720f;
-    radius = 10.0f;
+    //latitude = 37.781157f;
+    //longitude = -122.398720f;
+    //radius = 10.0f;
     
     ACAccountStore *accountStore = [[ACAccountStore alloc] init];
     ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
@@ -38,7 +40,7 @@
                 NSURL *url = [NSURL URLWithString:@"https://api.twitter.com/1.1/search/tweets.json"];
                 
                 //piece together the parameter value for the geocode parameter
-                NSString *geoCodeParam = [NSString stringWithFormat:@"%f,%f,%fmi", lat, lon, rad];
+                NSString *geoCodeParam = [NSString stringWithFormat:@"%f,%f,%fmi", latitude, longitude, radius];
                 
                 NSLog(@"%@", geoCodeParam);
                 
@@ -64,10 +66,10 @@
                                                                            options:NSJSONWritingPrettyPrinted error:&error];
                         NSString *showmejson = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
                         NSLog(@"%@", showmejson);
-                        NSLog(@"Number of results: %d", self.dataSource.count);
+                        NSLog(@"Number of results: %d", [[statusesDict allKeys] count]);
                         
                         /*** Tell data model we're done searching and send results ***/
-                        [receiver.UMATwitterController searchComplete(statusesDict)];
+                        [receiver searchComplete:statusesDict];
                     
                         
 //                        if (self.dataSource) {

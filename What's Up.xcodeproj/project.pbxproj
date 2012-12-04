@@ -13,7 +13,6 @@
 		68D6F4C3166692A400A4F09F /* UMAMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68D6F4C1166692A400A4F09F /* UMAMapViewController.m */; };
 		68D6F4CC1666933200A4F09F /* UMATwitterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68D6F4CB1666933200A4F09F /* UMATwitterController.m */; };
 		68D6F50616669E6A00A4F09F /* UMANavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68D6F50516669E6A00A4F09F /* UMANavigationController.m */; };
-		752196B21665779700F59F68 /* feedInterfaceStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 752196B11665779700F59F68 /* feedInterfaceStoryboard.storyboard */; };
 		8336DA40164C5B1800C53180 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8336DA3F164C5B1800C53180 /* UIKit.framework */; };
 		8336DA42164C5B1800C53180 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8336DA41164C5B1800C53180 /* Foundation.framework */; };
 		8336DA44164C5B1800C53180 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8336DA43164C5B1800C53180 /* CoreGraphics.framework */; };
@@ -24,6 +23,9 @@
 		8336DA54164C5B1800C53180 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8336DA53164C5B1800C53180 /* Default@2x.png */; };
 		8336DA56164C5B1800C53180 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8336DA55164C5B1800C53180 /* Default-568h@2x.png */; };
 		8336DA59164C5B1800C53180 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8336DA57164C5B1800C53180 /* MainStoryboard.storyboard */; };
+		83E7AB36166E65A7009A5740 /* UMATwitterAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 68D6F5081666A02400A4F09F /* UMATwitterAPI.m */; };
+		83E7AB38166E660A009A5740 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83E7AB37166E660A009A5740 /* Accounts.framework */; };
+		83E7AB3A166E6733009A5740 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83E7AB39166E6733009A5740 /* Twitter.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,7 +45,6 @@
 		68D6F5081666A02400A4F09F /* UMATwitterAPI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UMATwitterAPI.m; sourceTree = "<group>"; };
 		68D6F5091666A03600A4F09F /* UMATweetViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMATweetViewController.h; sourceTree = "<group>"; };
 		68D6F50A1666A03600A4F09F /* UMATweetViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UMATweetViewController.m; sourceTree = "<group>"; };
-		752196B11665779700F59F68 /* feedInterfaceStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = feedInterfaceStoryboard.storyboard; sourceTree = "<group>"; };
 		8336DA3B164C5B1800C53180 /* What's Up.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "What's Up.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8336DA3F164C5B1800C53180 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8336DA41164C5B1800C53180 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -58,6 +59,8 @@
 		8336DA53164C5B1800C53180 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		8336DA55164C5B1800C53180 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		8336DA58164C5B1800C53180 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		83E7AB37166E660A009A5740 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		83E7AB39166E6733009A5740 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +68,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83E7AB3A166E6733009A5740 /* Twitter.framework in Frameworks */,
+				83E7AB38166E660A009A5740 /* Accounts.framework in Frameworks */,
 				8336DA40164C5B1800C53180 /* UIKit.framework in Frameworks */,
 				8336DA42164C5B1800C53180 /* Foundation.framework in Frameworks */,
 				8336DA44164C5B1800C53180 /* CoreGraphics.framework in Frameworks */,
@@ -138,7 +143,6 @@
 			isa = PBXGroup;
 			children = (
 				8336DA57164C5B1800C53180 /* MainStoryboard.storyboard */,
-				752196B11665779700F59F68 /* feedInterfaceStoryboard.storyboard */,
 			);
 			name = Storyboard;
 			sourceTree = "<group>";
@@ -163,6 +167,8 @@
 		8336DA3E164C5B1800C53180 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				83E7AB39166E6733009A5740 /* Twitter.framework */,
+				83E7AB37166E660A009A5740 /* Accounts.framework */,
 				8336DA3F164C5B1800C53180 /* UIKit.framework */,
 				8336DA41164C5B1800C53180 /* Foundation.framework */,
 				8336DA43164C5B1800C53180 /* CoreGraphics.framework */,
@@ -256,7 +262,6 @@
 				8336DA54164C5B1800C53180 /* Default@2x.png in Resources */,
 				8336DA56164C5B1800C53180 /* Default-568h@2x.png in Resources */,
 				8336DA59164C5B1800C53180 /* MainStoryboard.storyboard in Resources */,
-				752196B21665779700F59F68 /* feedInterfaceStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,6 +272,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83E7AB36166E65A7009A5740 /* UMATwitterAPI.m in Sources */,
 				8336DA4C164C5B1800C53180 /* main.m in Sources */,
 				8336DA50164C5B1800C53180 /* UMAAppDelegate.m in Sources */,
 				68D6F4AE166691D200A4F09F /* UMATweet.m in Sources */,

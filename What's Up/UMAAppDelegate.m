@@ -9,16 +9,17 @@
 #import "UMAAppDelegate.h"
 #import "UMATwitterController.h"
 
+
 @implementation UMAAppDelegate
 @synthesize twitterController = _twitterController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-    return YES;
     
     _twitterController = [[UMATwitterController alloc] init];
-    
+        
+    return YES;
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application
