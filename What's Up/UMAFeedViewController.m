@@ -9,6 +9,7 @@
 #import "UMAFeedViewController.h"
 #import "UMAMapViewController.h"
 #import "UMANavigationController.h"
+#import "UMATweet.h"
 
 @interface UMAFeedViewController () {
     NSMutableArray *   _objects;
@@ -69,16 +70,24 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _objects.count;
+    return 1; //_objects.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    UITableViewCell *tweetCell = [tableView dequeueReusableCellWithIdentifier:@"tweetCell" forIndexPath:indexPath];
+
+    UILabel *handle = (UILabel *)[tweetCell viewWithTag:1];
+    UILabel *tweet = (UILabel *)[tweetCell viewWithTag:2];
+    UILabel *proximity = (UILabel *)[tweetCell viewWithTag:3];
+    UILabel *time = (UILabel *)[tweetCell viewWithTag:4];
     
-    NSDate *object = _objects[indexPath.row];
-    cell.textLabel.text = [object description];
-    return cell;
+    handle.text = @"username";
+    tweet.text = @"tweeeeeeeet";
+    proximity.text = @"close";
+    time.text = @"10PM";
+    
+    return tweetCell;
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -116,8 +125,8 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"showTweet"]) {
-        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        NSDate *object = _objects[indexPath.row];
+        //NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        //NSDate *object = _objects[indexPath.row];
         //[[segue destinationViewController] setDetailItem:object];
     }
 }
