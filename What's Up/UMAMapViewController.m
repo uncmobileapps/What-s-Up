@@ -8,6 +8,8 @@
 
 #import "UMAMapViewController.h"
 #import "UMAFeedViewController.h"
+#import "UMATwitterController.h"
+#import "UMAAppDelegate.h"
 
 @interface UMAMapViewController ()
 
@@ -28,6 +30,13 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    UMATwitterController *twController = [((UMAAppDelegate *)[[UIApplication sharedApplication] delegate]) twitterController];
+    [twController getTweetsArray];
+
+    
+//    NSLog(@"it got to line 37 of uma map%@", tweets);
+
 }
 
 - (void)didReceiveMemoryWarning

@@ -19,7 +19,7 @@
  UMATwitterController *twController = [[UIApplication mainApplication] twitterController]; 
  NSArray *tweets = [twController getTweetsArray];
 */
-- (NSArray*)getTweetsArray;
+- (NSMutableArray*)getTweetsArray;
 
 //UMATwitterAPI calls this within searchTwitterWithLatitude once it gets a result
 - (void)searchComplete:(NSDictionary*)twitterResultDict;

@@ -20,7 +20,6 @@
                         longitude:(float)longitude
                            radius:(float)radius
                          delegate:(UMATwitterController *)receiver {
-    
     // setting values manually for testing
     //latitude = 37.781157f;
     //longitude = -122.398720f;
@@ -41,12 +40,12 @@
                 
                 //piece together the parameter value for the geocode parameter
                 NSString *geoCodeParam = [NSString stringWithFormat:@"%f,%f,%fmi", latitude, longitude, radius];
-                
-                NSLog(@"%@", geoCodeParam);
+
+//                NSLog(@"%@", geoCodeParam);
                 
                 //set search params
                 NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
-                // [parameters setObject:@"chapel hill" forKey:@"q"];
+//                 [parameters setObject:@"chapel hill" forKey:@"q"];
                 [parameters setObject:geoCodeParam forKey:@"geocode"];
                 // [parameters setObject:@"50" forKey:@"count"];  // by default, we should get 15 results
                 
@@ -65,8 +64,8 @@
                         NSData *jsonData = [NSJSONSerialization dataWithJSONObject:statusesDict
                                                                            options:NSJSONWritingPrettyPrinted error:&error];
                         NSString *showmejson = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-                        NSLog(@"%@", showmejson);
-                        NSLog(@"Number of results: %d", [[statusesDict allKeys] count]);
+//                        NSLog(@"%@", showmejson);
+//                        NSLog(@"Number of results: %d", [[statusesDict allKeys] count]);
                         
                         /*** Tell data model we're done searching and send results ***/
                         [receiver searchComplete:statusesDict];

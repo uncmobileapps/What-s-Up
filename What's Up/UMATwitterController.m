@@ -17,41 +17,58 @@
 
 - (void)searchComplete:(NSDictionary*)statusesDict {
     
-    if(twitterResultDict) {
+//    if(twitterResultDict) {
         twitterResultDict = statusesDict;
         self.searchDone=TRUE;
-    }
+//    }
 }
 
 //returns array of UMATweet objects
-- (NSArray*)getTweetsArray {
+- (NSMutableArray*)getTweetsArray {
     
     self.searchDone=FALSE;
     
     //get current location coordinates of device from Core Location, and set to deviceLatitude and deviceLongitude
-    UMALocationService *locationService = [[UMALocationService alloc]init];
+//    UMALocationService *locationService = [[UMALocationService alloc]init];
     //NSDictionary *deviceLocationDict = [locationService currentLocation];
     //float *deviceLatitude = [deviceLocationDict objectForKey:@"latitude"];
     //float *deviceLongitude = [deviceLocationDict objectForKey:@"longitude"];
     
-//    UMATwitterAPI *twitterAPI = [[UMATwitterAPI alloc] init];
-//    [twitterAPI searchTwitterWithLatitude:deviceLatitude longitude:deviceLongitude radius:10.0 delegate:self];
+    
+    UMATwitterAPI *twitterAPI = [[UMATwitterAPI alloc] init];
+    [twitterAPI searchTwitterWithLatitude:37.838291 longitude:-73.293843 radius:10.0 delegate:self];
     
     //pause getTweetsArray until it has gotten the statusesDict from TwitterAPI
     while(!self.searchDone) {}
     
-    NSMutableArray *tweetsArray = [[NSArray alloc]init];
+    NSMutableArray *tweetsArray = [[NSMutableArray alloc]init];
     NSMutableArray *tweetResultsArray = [twitterResultDict objectForKey:@"statuses"];
     
+        NSLog(@"%@",[twitterResultDict objectForKey:@"statuses"]);
+    
+    //see if there are 0 tweets found
+    if([[twitterResultDict objectForKey:@"statuses"] count] == 0){
+
+        return nil;
+        
+    }
+    
+    else {
+        
+
     for(int i=0; i<[tweetResultsArray count]-1; i++) {
         
         UMATweet *tweetObject = [[UMATweet alloc]init];
         
-        NSDictionary *thisTweet = [tweetResultsArray objectAtIndex:i];
+        NSLog(@"tweet results: %@",twitterResultDict);
+
+//THIS LINE DOESN'T LIKE ME REFERENCES OBJECT AT INDEX I
+//        NSDictionary *thisTweet = [tweetResultsArray objectAtIndex:i];
+        NSDictionary *thisTweet = [[NSDictionary alloc]init];
 
         //---------------Latitude and Longitude-----------------------
         // latitude and longitude are nullable in the tweet result we get from Twitter, so we must check if they exist before trying to access them
-        
+
         //NOT SURE IF THIS IS CORRECT
         if ([[[thisTweet objectForKey:@"coordinates"] objectForKey:@"coordinates"] objectAtIndex:1]) {
             
@@ -89,6 +106,7 @@
     } //end for count of tweetResultsArray
     
     return tweetsArray;
+    }
 }
 
 @end
