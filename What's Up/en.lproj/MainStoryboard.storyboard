@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2843" systemVersion="11G63b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1930"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1929"/>
     </dependencies>
     <scenes>
         <!--Map View Controller-->
@@ -22,14 +22,22 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0ZG-4U-lYe"/>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="I3D-np-Fjh" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="K5c-FT-LaB"/>
+                            <constraint firstItem="0ZG-4U-lYe" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="Wfx-2B-7h6"/>
+                            <constraint firstItem="0ZG-4U-lYe" firstAttribute="bottom" secondItem="I3D-np-Fjh" secondAttribute="top" type="default" id="Y1c-oo-nFe"/>
+                            <constraint firstItem="0ZG-4U-lYe" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="jZa-KR-vzq"/>
                             <constraint firstItem="I3D-np-Fjh" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="q2K-Fp-GlU"/>
                             <constraint firstItem="I3D-np-Fjh" firstAttribute="bottom" secondItem="3" secondAttribute="bottom" type="default" id="sf9-Hy-hH8"/>
+                            <constraint firstItem="0ZG-4U-lYe" firstAttribute="top" secondItem="3" secondAttribute="top" type="default" id="ung-Op-hxa"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="0ZG-4U-lYe" id="UZA-tq-ISX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>

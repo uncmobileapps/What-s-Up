@@ -26,6 +26,7 @@
 		83E7AB36166E65A7009A5740 /* UMATwitterAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 68D6F5081666A02400A4F09F /* UMATwitterAPI.m */; };
 		83E7AB38166E660A009A5740 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83E7AB37166E660A009A5740 /* Accounts.framework */; };
 		83E7AB3A166E6733009A5740 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83E7AB39166E6733009A5740 /* Twitter.framework */; };
+		C522934D166EBF2500B1733B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C522934C166EBF2500B1733B /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +62,7 @@
 		8336DA58164C5B1800C53180 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		83E7AB37166E660A009A5740 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		83E7AB39166E6733009A5740 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
+		C522934C166EBF2500B1733B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C522934D166EBF2500B1733B /* MapKit.framework in Frameworks */,
 				83E7AB3A166E6733009A5740 /* Twitter.framework in Frameworks */,
 				83E7AB38166E660A009A5740 /* Accounts.framework in Frameworks */,
 				8336DA40164C5B1800C53180 /* UIKit.framework in Frameworks */,
@@ -150,6 +153,7 @@
 		8336DA30164C5B1800C53180 = {
 			isa = PBXGroup;
 			children = (
+				C522934C166EBF2500B1733B /* MapKit.framework */,
 				8336DA45164C5B1800C53180 /* What's Up */,
 				8336DA3E164C5B1800C53180 /* Frameworks */,
 				8336DA3C164C5B1800C53180 /* Products */,
