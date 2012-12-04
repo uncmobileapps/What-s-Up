@@ -10,4 +10,6 @@
 
 @interface UMATwitterAPI : NSObject
 
+- (void)searchTwitterWithLatitude:(float)latitude longitude:(float)longitude radius:(float)radius delegate:(UMATwitterController *)receiver;
+
 @end
