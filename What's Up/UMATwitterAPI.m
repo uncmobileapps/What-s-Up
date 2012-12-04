@@ -60,24 +60,15 @@
                         //set dataSource array to the Twitter JSON feed
                         NSMutableDictionary *statusesDict = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:&error];
                         
-                        //self.dataSource = [statusesDict objectForKey:@"statuses"];
-                        // NSLog(@"number of tweets: %d",self.dataSource.count);
-                        // NSLog(@"statusesDict: %@", statusesDict);
-                        
-                        
                         NSData *jsonData = [NSJSONSerialization dataWithJSONObject:statusesDict
                                                                            options:NSJSONWritingPrettyPrinted error:&error];
-                        NSString *showmejson = [[NSString alloc] initWithData:jsonData
-                                                                     encoding:NSUTF8StringEncoding];
-                        
+                        NSString *showmejson = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
                         NSLog(@"%@", showmejson);
                         NSLog(@"Number of results: %d", self.dataSource.count);
                         
                         /*** Tell data model we're done searching and send results ***/
                         [receiver.UMATwitterController searchComplete(statusesDict)];
                     
-                        
-                        // NSJSONWritingPrettyPrinted
                         
 //                        if (self.dataSource) {
 //                            [self.tableView reloadData];
@@ -87,7 +78,8 @@
 //                            [self.activityIndicatorView stopAnimating];
 //                        } else {
 //                            NSLog(@"Error %@ with user info %@.", error, error.userInfo);
-                        }
+//                        }
+                        
                     } //end if(responseData)
                 }]; //end performRequestWithHandler
             } //end if accounts.count
