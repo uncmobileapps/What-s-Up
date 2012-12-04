@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4630C404166EB4C800D86101 /* Coordinates.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4630C403166EB4C800D86101 /* Coordinates.plist */; };
 		68D6F4AE166691D200A4F09F /* UMATweet.m in Sources */ = {isa = PBXBuildFile; fileRef = 68D6F4AD166691D200A4F09F /* UMATweet.m */; };
 		68D6F4B51666925700A4F09F /* UMALocationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 68D6F4B41666925700A4F09F /* UMALocationService.m */; };
 		68D6F4B91666927F00A4F09F /* UMAFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68D6F4B71666927F00A4F09F /* UMAFeedViewController.m */; };
@@ -30,6 +31,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4630C403166EB4C800D86101 /* Coordinates.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Coordinates.plist; sourceTree = "<group>"; };
 		68D6F4AC166691D200A4F09F /* UMATweet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMATweet.h; sourceTree = "<group>"; };
 		68D6F4AD166691D200A4F09F /* UMATweet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMATweet.m; sourceTree = "<group>"; };
 		68D6F4B31666925700A4F09F /* UMALocationService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMALocationService.h; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 		68D6F4C7166692CB00A4F09F /* Data Model */ = {
 			isa = PBXGroup;
 			children = (
+				4630C403166EB4C800D86101 /* Coordinates.plist */,
 				68D6F4AC166691D200A4F09F /* UMATweet.h */,
 				68D6F4AD166691D200A4F09F /* UMATweet.m */,
 				68D6F4CA1666933200A4F09F /* UMATwitterController.h */,
@@ -266,6 +269,7 @@
 				8336DA54164C5B1800C53180 /* Default@2x.png in Resources */,
 				8336DA56164C5B1800C53180 /* Default-568h@2x.png in Resources */,
 				8336DA59164C5B1800C53180 /* MainStoryboard.storyboard in Resources */,
+				4630C404166EB4C800D86101 /* Coordinates.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

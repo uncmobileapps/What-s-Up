@@ -12,7 +12,7 @@
 #import "UMATweet.h"
 
 @interface UMAFeedViewController () {
-    NSMutableArray *   _objects;
+    NSMutableArray *_objects;
 }
 
 @end
@@ -33,7 +33,35 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    // Do any additional setup after loading the view from its nib.]]
+    
+    NSBundle *bundle = [NSBundle mainBundle];
+    NSString *plistPath = [bundle pathForResource:@"Coordinates" ofType:@"plist"];
+    NSDictionary *plistDict = [NSDictionary dictionaryWithContentsOfFile:plistPath];
+    //NSLog(@"%@", plistDict);
+    
+    NSMutableArray *testTweets = [[plistDict objectForKey:@"Coordinates"] mutableCopy];
+    
+    // NSLog(@"%@", testTweets);
+    
+    NSMutableArray *testUMATweets = [NSMutableArray array];
+    
+    for (NSDictionary *tweetasdict in testTweets) {
+        UMATweet *tweet = [[UMATweet alloc] init];
+        tweet.username = [tweetasdict objectForKey:@"username"];
+        tweet.latitude = [tweetasdict objectForKey:@"latitude"];
+        tweet.longitude = [tweetasdict objectForKey:@"longitude"];
+        tweet.proximity = [tweetasdict objectForKey:@"proximity"];
+        tweet.tweetID = [tweetasdict objectForKey:@"tweetID"];
+        tweet.text = [tweetasdict objectForKey:@"tweet"];
+        
+        [testUMATweets addObject:tweet];
+    }
+    
+    //NSLog(@"%@", testUMATweets);
+    
+    _objects = testUMATweets;
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -70,7 +98,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1; //_objects.count;
+    return _objects.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -82,10 +110,16 @@
     UILabel *proximity = (UILabel *)[tweetCell viewWithTag:3];
     UILabel *time = (UILabel *)[tweetCell viewWithTag:4];
     
-    handle.text = @"username";
-    tweet.text = @"tweeeeeeeet";
-    proximity.text = @"close";
-    time.text = @"10PM";
+//    handle.text = @"username";
+//    tweet.text = @"tweeeeeeeet";
+//    proximity.text = @"close";
+//    time.text = @"10PM";
+    
+    UMATweet *onetweet = _objects[indexPath.row];
+    handle.text = onetweet.username;
+    tweet.text = onetweet.text;
+    proximity.text = [onetweet.proximity stringValue];
+    time.text = @"10pm";
     
     return tweetCell;
 }
