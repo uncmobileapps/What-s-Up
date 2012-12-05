@@ -17,10 +17,8 @@
 
 - (void)searchComplete:(NSDictionary*)statusesDict {
     
-//    if(twitterResultDict) {
         twitterResultDict = statusesDict;
         self.searchDone=TRUE;
-//    }
 }
 
 //returns array of UMATweet objects
@@ -29,14 +27,13 @@
     self.searchDone=FALSE;
     
     //get current location coordinates of device from Core Location, and set to deviceLatitude and deviceLongitude
-//    UMALocationService *locationService = [[UMALocationService alloc]init];
+    UMALocationService *locationService = [[UMALocationService alloc]init];
     //NSDictionary *deviceLocationDict = [locationService currentLocation];
     //float *deviceLatitude = [deviceLocationDict objectForKey:@"latitude"];
     //float *deviceLongitude = [deviceLocationDict objectForKey:@"longitude"];
     
-    
     UMATwitterAPI *twitterAPI = [[UMATwitterAPI alloc] init];
-    [twitterAPI searchTwitterWithLatitude:37.838291 longitude:-73.293843 radius:10.0 delegate:self];
+    [twitterAPI searchTwitterWithLatitude:37.781157 longitude:-122.398720 radius:10.0 delegate:self];
     
     //pause getTweetsArray until it has gotten the statusesDict from TwitterAPI
     while(!self.searchDone) {}
@@ -44,13 +41,10 @@
     NSMutableArray *tweetsArray = [[NSMutableArray alloc]init];
     NSMutableArray *tweetResultsArray = [twitterResultDict objectForKey:@"statuses"];
     
-        NSLog(@"%@",[twitterResultDict objectForKey:@"statuses"]);
-    
     //see if there are 0 tweets found
     if([[twitterResultDict objectForKey:@"statuses"] count] == 0){
-
-        return nil;
         
+        return nil;
     }
     
     else {
@@ -59,18 +53,15 @@
     for(int i=0; i<[tweetResultsArray count]-1; i++) {
         
         UMATweet *tweetObject = [[UMATweet alloc]init];
-        
-        NSLog(@"tweet results: %@",twitterResultDict);
 
-//THIS LINE DOESN'T LIKE ME REFERENCES OBJECT AT INDEX I
-//        NSDictionary *thisTweet = [tweetResultsArray objectAtIndex:i];
-        NSDictionary *thisTweet = [[NSDictionary alloc]init];
+        NSDictionary *thisTweet = [tweetResultsArray objectAtIndex:i];
+        
+//        NSLog(@"%@",[tweetResultsArray objectAtIndex:i]);
 
         //---------------Latitude and Longitude-----------------------
         // latitude and longitude are nullable in the tweet result we get from Twitter, so we must check if they exist before trying to access them
 
-        //NOT SURE IF THIS IS CORRECT
-        if ([[[thisTweet objectForKey:@"coordinates"] objectForKey:@"coordinates"] objectAtIndex:1]) {
+        if ([thisTweet objectForKey:@"coordinates"] == NULL) {
             
             tweetObject.longitude = [NSNumber numberWithFloat:[[[[thisTweet objectForKey:@"coordinates"] objectForKey:@"coordinates"] objectAtIndex:1]floatValue]];
             tweetObject.latitude = [NSNumber numberWithFloat:[[[[thisTweet objectForKey:@"coordinates"] objectForKey:@"coordinates"] objectAtIndex:0]floatValue]];
@@ -85,12 +76,12 @@
         //-----------------Tweet Age----------------------------------
         NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
         //    Twitter format: "Wed Aug 27 13:08:45 +0000 2008"
-        [dateFormatter setDateFormat:@"EEE LLL d HH:mm:ss Z"];
+        [dateFormatter setDateFormat:@"EEE LLL d HH:mm:ss Z y"];
         
         //convert tweet date from string to NSDate
         NSDate *tweetDate = [dateFormatter dateFromString:[thisTweet objectForKey:@"created_at"]];
         NSTimeInterval tweetAgeInSeconds = [tweetDate timeIntervalSinceNow];
-        NSLog(@"Tweet Age: %@",[NSNumber numberWithInt:tweetAgeInSeconds]); //NOT SURE IF THIS IS CORRECT
+//        NSLog(@"Tweet Age: %@",[NSNumber numberWithInt:tweetAgeInSeconds]); //NOT SURE IF THIS IS CORRECT
 
         //---------------------Set Tweet object properties-----------------------
         tweetObject.tweetID = [NSNumber numberWithLongLong:[thisTweet objectForKey:@"id"]];
@@ -102,9 +93,11 @@
         
         //add this tweet to the array of all tweets in this results feed
         [tweetsArray addObject:tweetObject];
+        
+
 
     } //end for count of tweetResultsArray
-    
+
     return tweetsArray;
     }
 }
