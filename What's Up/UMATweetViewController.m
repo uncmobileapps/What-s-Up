@@ -7,9 +7,10 @@
 //
 
 #import "UMATweetViewController.h"
+#import "UMATweet.h"
 
 @interface UMATweetViewController ()
-
+- (void)configureView;
 @end
 
 @implementation UMATweetViewController
@@ -27,12 +28,43 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    [self configureView];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Managing the detail item
+
+- (void)setDetailItem:(UMATweet *)newDetailItem
+{
+    if (_detailItem != newDetailItem) {
+        _detailItem = newDetailItem;
+        
+        // Update the view.
+        [self configureView];
+    }
+}
+
+- (void)configureView
+{
+    // Update the user interface for the detail item.
+    
+    if (self.detailItem) {
+        
+        /***** CONFIGURE THE VIEW HERE (Exmple from class project is below) *****/
+        
+        //self.title = [self.detailItem valueForKey:@"Name"];
+    }
+}
+
+- (void)viewDidUnload {
+    
+    [super viewDidUnload];
 }
 
 @end

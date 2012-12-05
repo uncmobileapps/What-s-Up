@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UMATweet.h"
 
 @interface UMATweetViewController : UIViewController
+
+@property (strong, nonatomic) UMATweet *detailItem;
 
 @end

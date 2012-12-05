@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4630C404166EB4C800D86101 /* Coordinates.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4630C403166EB4C800D86101 /* Coordinates.plist */; };
+		4630C40D166EEB8500D86101 /* UMATweetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68D6F50A1666A03600A4F09F /* UMATweetViewController.m */; };
 		68D6F4AE166691D200A4F09F /* UMATweet.m in Sources */ = {isa = PBXBuildFile; fileRef = 68D6F4AD166691D200A4F09F /* UMATweet.m */; };
 		68D6F4B51666925700A4F09F /* UMALocationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 68D6F4B41666925700A4F09F /* UMALocationService.m */; };
 		68D6F4B91666927F00A4F09F /* UMAFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68D6F4B71666927F00A4F09F /* UMAFeedViewController.m */; };
@@ -280,6 +281,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4630C40D166EEB8500D86101 /* UMATweetViewController.m in Sources */,
 				83E7AB36166E65A7009A5740 /* UMATwitterAPI.m in Sources */,
 				8336DA4C164C5B1800C53180 /* main.m in Sources */,
 				8336DA50164C5B1800C53180 /* UMAAppDelegate.m in Sources */,

@@ -7,9 +7,11 @@
 //
 
 #import "UMAFeedViewController.h"
+#import "UMATweetViewController.h"
 #import "UMAMapViewController.h"
 #import "UMANavigationController.h"
 #import "UMATweet.h"
+#import "UMATwitterController.h"
 
 @interface UMAFeedViewController () {
     NSMutableArray *_objects;
@@ -34,16 +36,18 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.]]
+   
     
+    /**** Uncomment this section to use test data from Coordinates.plist instead of live data ****/
+    
+    /*
+    // Find the Coordinates.plist and save it as an array of dictionaries
     NSBundle *bundle = [NSBundle mainBundle];
     NSString *plistPath = [bundle pathForResource:@"Coordinates" ofType:@"plist"];
     NSDictionary *plistDict = [NSDictionary dictionaryWithContentsOfFile:plistPath];
-    //NSLog(@"%@", plistDict);
-    
     NSMutableArray *testTweets = [[plistDict objectForKey:@"Coordinates"] mutableCopy];
     
-    // NSLog(@"%@", testTweets);
-    
+    // Initialize array to store tweets
     NSMutableArray *testUMATweets = [NSMutableArray array];
     
     for (NSDictionary *tweetasdict in testTweets) {
@@ -57,10 +61,12 @@
         
         [testUMATweets addObject:tweet];
     }
-    
-    //NSLog(@"%@", testUMATweets);
-    
+   
     _objects = testUMATweets;
+    */
+    
+    UMATwitterController *controller = [[UMATwitterController alloc] init];
+    _objects = [controller getTweetsArray];
     
 }
 
@@ -159,9 +165,9 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"showTweet"]) {
-        //NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        //NSDate *object = _objects[indexPath.row];
-        //[[segue destinationViewController] setDetailItem:object];
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        UMATweet *atweet = _objects[indexPath.row];
+        [[segue destinationViewController] setDetailItem:atweet];
     }
 }
 
