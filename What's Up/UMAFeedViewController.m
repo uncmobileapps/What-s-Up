@@ -12,6 +12,7 @@
 #import "UMANavigationController.h"
 #import "UMATweet.h"
 #import "UMATwitterController.h"
+#import "UMAAppDelegate.h"
 
 @interface UMAFeedViewController () {
     NSMutableArray *_objects;
@@ -65,8 +66,11 @@
     _objects = testUMATweets;
     */
     
-    UMATwitterController *controller = [[UMATwitterController alloc] init];
-    _objects = [controller getTweetsArray];
+    // Get a reference to our singleton twitter controller instance
+    twitterController = [((UMAAppDelegate *)[[UIApplication sharedApplication] delegate]) twitterController];
+
+    // Get the current list of tweets
+    _objects = [twitterController getTweetsArray];
     
 }
 

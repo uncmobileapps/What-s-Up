@@ -7,7 +7,6 @@
 //
 
 #import "UMATwitterAPI.h"
-#import "UMALocationService.h"
 #import "UMATwitterController.h"
 #import <Twitter/Twitter.h>
 #import <Accounts/Accounts.h>

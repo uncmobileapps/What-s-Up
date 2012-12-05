@@ -9,8 +9,13 @@
 #import <UIKit/UIKit.h>
 
 @class UMAMapViewController;
+@class UMATwitterController;
 
-@interface UMAFeedViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate, UINavigationControllerDelegate>
+@interface UMAFeedViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate, UINavigationControllerDelegate> {
+    
+    UMATwitterController *twitterController;
+    
+}
 
 - (IBAction)returnToMapInterface:(id)sender;
 

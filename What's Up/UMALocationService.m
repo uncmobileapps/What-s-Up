@@ -19,6 +19,8 @@
     
     if ((self = [super init])) {
         [self startStandardUpdates];
+        deviceLatitude = 0.0f;
+        deviceLongitude = 0.0f;
     }
     
     return self;
@@ -36,17 +38,17 @@
 
 - (void)startStandardUpdates{
     // Create the location manager if object does not already have one.
-    if (nil == locationManager){
-        locationManager = [[CLLocationManager alloc] init];
+    if (nil == self.locationManager){
+        self.locationManager = [[CLLocationManager alloc] init];
     }
     
-    locationManager.delegate = self;
-    locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
+    self.locationManager.delegate = self;
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
     
     // Set a movement threshold for new events.
-    locationManager.distanceFilter = .05; //not sure if this is working
+    self.locationManager.distanceFilter = .05; //not sure if this is working
     
-    [locationManager startUpdatingLocation];
+    [self.locationManager startUpdatingLocation];
 }
 
 - (void)locationManager:(CLLocationManager *)manager

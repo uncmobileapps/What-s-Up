@@ -8,7 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-@interface UMATwitterController : NSObject
+@class UMALocationService;
+
+@interface UMATwitterController : NSObject {
+    UMALocationService *locationService;
+}
 
 @property (nonatomic, assign) BOOL searchDone;
 @property (nonatomic, strong) NSDictionary * twitterResultDict;

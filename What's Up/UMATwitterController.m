@@ -15,6 +15,15 @@
 
 @synthesize twitterResultDict;
 
+- (id)init {
+    
+    if ((self = [super init])) {
+        locationService = [[UMALocationService alloc] init];
+    }
+    
+    return self;
+}
+
 - (void)searchComplete:(NSDictionary*)statusesDict {
     
         twitterResultDict = statusesDict;
@@ -27,13 +36,12 @@
     self.searchDone=FALSE;
     
     //get current location coordinates of device from Core Location, and set to deviceLatitude and deviceLongitude
-    UMALocationService *locationService = [[UMALocationService alloc]init];
-    //NSDictionary *deviceLocationDict = [locationService currentLocation];
-    //float *deviceLatitude = [deviceLocationDict objectForKey:@"latitude"];
-    //float *deviceLongitude = [deviceLocationDict objectForKey:@"longitude"];
+    NSDictionary *deviceLocationDict = [locationService currentLocation];
+    double deviceLatitude = [[deviceLocationDict objectForKey:@"latitude"] doubleValue];
+    double deviceLongitude = [[deviceLocationDict objectForKey:@"longitude"] doubleValue];
     
     UMATwitterAPI *twitterAPI = [[UMATwitterAPI alloc] init];
-    [twitterAPI searchTwitterWithLatitude:37.781157 longitude:-122.398720 radius:10.0 delegate:self];
+    [twitterAPI searchTwitterWithLatitude:deviceLatitude longitude:deviceLongitude radius:10.0 delegate:self];
     
     //pause getTweetsArray until it has gotten the statusesDict from TwitterAPI
     while(!self.searchDone) {}

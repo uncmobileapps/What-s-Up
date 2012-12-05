@@ -18,6 +18,7 @@
     
     double deviceLatitude;
     double deviceLongitude;
+
 }
 
 @property (nonatomic, strong) CLLocationManager *locationManager;
