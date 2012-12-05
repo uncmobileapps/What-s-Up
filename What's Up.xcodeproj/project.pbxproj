@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4630C404166EB4C800D86101 /* Coordinates.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4630C403166EB4C800D86101 /* Coordinates.plist */; };
 		4630C40D166EEB8500D86101 /* UMATweetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68D6F50A1666A03600A4F09F /* UMATweetViewController.m */; };
+		4630C410166EFC5B00D86101 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4630C40F166EFC5B00D86101 /* CoreLocation.framework */; };
 		68D6F4AE166691D200A4F09F /* UMATweet.m in Sources */ = {isa = PBXBuildFile; fileRef = 68D6F4AD166691D200A4F09F /* UMATweet.m */; };
 		68D6F4B51666925700A4F09F /* UMALocationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 68D6F4B41666925700A4F09F /* UMALocationService.m */; };
 		68D6F4B91666927F00A4F09F /* UMAFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68D6F4B71666927F00A4F09F /* UMAFeedViewController.m */; };
@@ -33,6 +34,7 @@
 
 /* Begin PBXFileReference section */
 		4630C403166EB4C800D86101 /* Coordinates.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Coordinates.plist; sourceTree = "<group>"; };
+		4630C40F166EFC5B00D86101 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		68D6F4AC166691D200A4F09F /* UMATweet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMATweet.h; sourceTree = "<group>"; };
 		68D6F4AD166691D200A4F09F /* UMATweet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMATweet.m; sourceTree = "<group>"; };
 		68D6F4B31666925700A4F09F /* UMALocationService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMALocationService.h; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4630C410166EFC5B00D86101 /* CoreLocation.framework in Frameworks */,
 				C522934D166EBF2500B1733B /* MapKit.framework in Frameworks */,
 				83E7AB3A166E6733009A5740 /* Twitter.framework in Frameworks */,
 				83E7AB38166E660A009A5740 /* Accounts.framework in Frameworks */,
@@ -157,6 +160,7 @@
 		8336DA30164C5B1800C53180 = {
 			isa = PBXGroup;
 			children = (
+				4630C40F166EFC5B00D86101 /* CoreLocation.framework */,
 				C522934C166EBF2500B1733B /* MapKit.framework */,
 				8336DA45164C5B1800C53180 /* What's Up */,
 				8336DA3E164C5B1800C53180 /* Frameworks */,
