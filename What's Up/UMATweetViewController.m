@@ -14,6 +14,10 @@
 @end
 
 @implementation UMATweetViewController
+@synthesize handle;
+@synthesize tweet;
+@synthesize proximity;
+@synthesize time;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -56,9 +60,11 @@
     
     if (self.detailItem) {
         
-        /***** CONFIGURE THE VIEW HERE (Exmple from class project is below) *****/
+        handle.text = [self.detailItem valueForKey:@"username"];
+        tweet.text = [self.detailItem valueForKey:@"text"];
+        proximity.text = [NSString stringWithFormat:@"%@", [self.detailItem valueForKey:@"proximity"]];
+        time.text = [NSString stringWithFormat:@"%@", [self.detailItem valueForKey:@"age"]];
         
-        //self.title = [self.detailItem valueForKey:@"Name"];
     }
 }
 

@@ -10,6 +10,10 @@
 #import "UMATweet.h"
 
 @interface UMATweetViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UILabel *handle;
+@property (weak, nonatomic) IBOutlet UILabel *tweet;
+@property (weak, nonatomic) IBOutlet UILabel *proximity;
+@property (weak, nonatomic) IBOutlet UILabel *time;
 
 @property (strong, nonatomic) UMATweet *detailItem;
 

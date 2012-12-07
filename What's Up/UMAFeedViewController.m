@@ -13,6 +13,7 @@
 #import "UMATweet.h"
 #import "UMATwitterController.h"
 #import "UMAAppDelegate.h"
+NSArray *_objects;
 
 @interface UMAFeedViewController () {
     NSMutableArray *_objects;
@@ -129,7 +130,7 @@
     handle.text = onetweet.username;
     tweet.text = onetweet.text;
     proximity.text = [onetweet.proximity stringValue];
-    time.text = @"10pm";
+    time.text = [onetweet.age stringValue];
     
     return tweetCell;
 }
