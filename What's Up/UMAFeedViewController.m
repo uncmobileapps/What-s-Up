@@ -38,34 +38,6 @@ NSArray *_objects;
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.]]
-   
-    
-    /**** Uncomment this section to use test data from Coordinates.plist instead of live data ****/
-    
-    /*
-    // Find the Coordinates.plist and save it as an array of dictionaries
-    NSBundle *bundle = [NSBundle mainBundle];
-    NSString *plistPath = [bundle pathForResource:@"Coordinates" ofType:@"plist"];
-    NSDictionary *plistDict = [NSDictionary dictionaryWithContentsOfFile:plistPath];
-    NSMutableArray *testTweets = [[plistDict objectForKey:@"Coordinates"] mutableCopy];
-    
-    // Initialize array to store tweets
-    NSMutableArray *testUMATweets = [NSMutableArray array];
-    
-    for (NSDictionary *tweetasdict in testTweets) {
-        UMATweet *tweet = [[UMATweet alloc] init];
-        tweet.username = [tweetasdict objectForKey:@"username"];
-        tweet.latitude = [tweetasdict objectForKey:@"latitude"];
-        tweet.longitude = [tweetasdict objectForKey:@"longitude"];
-        tweet.proximity = [tweetasdict objectForKey:@"proximity"];
-        tweet.tweetID = [tweetasdict objectForKey:@"tweetID"];
-        tweet.text = [tweetasdict objectForKey:@"tweet"];
-        
-        [testUMATweets addObject:tweet];
-    }
-   
-    _objects = testUMATweets;
-    */
     
     // Get a reference to our singleton twitter controller instance
     twitterController = [((UMAAppDelegate *)[[UIApplication sharedApplication] delegate]) twitterController];
@@ -138,7 +110,7 @@ NSArray *_objects;
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the specified item to be editable.
-    return YES;
+    return NO;
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath

@@ -60,11 +60,14 @@
                         //set dataSource array to the Twitter JSON feed
                         NSMutableDictionary *statusesDict = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:&error];
                         
+                        /** Uncomment this block if you want to see the json version of the twitter search results 
                         NSData *jsonData = [NSJSONSerialization dataWithJSONObject:statusesDict
                                                                            options:NSJSONWritingPrettyPrinted error:&error];
                         NSString *showmejson = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-//                        NSLog(@"%@", showmejson);
-//                        NSLog(@"Number of results: %d", [[statusesDict allKeys] count]);
+                        NSLog(@"%@", showmejson);
+                        NSLog(@"Number of results: %d", [[statusesDict allKeys] count]);
+                        **/
+                        
                         
                         /*** Tell data model we're done searching and send results ***/
                         [receiver searchComplete:statusesDict];

@@ -25,6 +25,8 @@
 */
 - (NSMutableArray*)getTweetsArray;
 
+- (NSMutableArray*)getTestTweetsArray;
+
 //UMATwitterAPI calls this within searchTwitterWithLatitude once it gets a result
 - (void)searchComplete:(NSDictionary*)twitterResultDict;
 

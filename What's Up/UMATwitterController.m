@@ -110,4 +110,34 @@
     }
 }
 
+- (NSMutableArray*)getTestTweetsArray {
+    
+    /**** Uncomment this section to use test data from Coordinates.plist instead of live data ****/
+    
+     // Find the Coordinates.plist and save it as an array of dictionaries
+     NSBundle *bundle = [NSBundle mainBundle];
+     NSString *plistPath = [bundle pathForResource:@"Coordinates" ofType:@"plist"];
+     NSDictionary *plistDict = [NSDictionary dictionaryWithContentsOfFile:plistPath];
+     NSMutableArray *testTweets = [[plistDict objectForKey:@"Coordinates"] mutableCopy];
+     
+     // Initialize array to store tweets
+     NSMutableArray *testUMATweets = [NSMutableArray array];
+     
+     for (NSDictionary *tweetasdict in testTweets) {
+         UMATweet *tweet = [[UMATweet alloc] init];
+         tweet.username = [tweetasdict objectForKey:@"username"];
+         tweet.latitude = [tweetasdict objectForKey:@"latitude"];
+         tweet.longitude = [tweetasdict objectForKey:@"longitude"];
+         tweet.proximity = [tweetasdict objectForKey:@"proximity"];
+         tweet.tweetID = [tweetasdict objectForKey:@"tweetID"];
+         tweet.text = [tweetasdict objectForKey:@"tweet"];
+         tweet.age = [tweetasdict objectForKey:@"age"];
+     
+         [testUMATweets addObject:tweet];
+         
+     }
+    
+    return testUMATweets;
+}
+
 @end

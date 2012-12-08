@@ -3,8 +3,6 @@
 
 *.xcscheme
 
-*.plist
-
 *.xcbkptlist
 
 *.xcuserstate
@@ -12,3 +10,7 @@
 *.xcuserstate
 
 *.pbxproj
+
+What's Up.xcodeproj/xcuserdata/kmdunne.xcuserdatad/xcschemes/xcschememanagement.plist
+
+.DS_Store
