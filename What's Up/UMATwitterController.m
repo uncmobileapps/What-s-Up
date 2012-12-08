@@ -95,8 +95,9 @@
         tweetObject.tweetID = [NSNumber numberWithLongLong:[thisTweet objectForKey:@"id"]];
         tweetObject.text = [thisTweet objectForKey:@"text"];
         tweetObject.username = [[thisTweet objectForKey:@"user"] objectForKey:@"screen_name"];
-        tweetObject.age = [NSNumber numberWithInt:tweetAgeInSeconds];
-        //        tweetObject.proximity = [[locationService getProximityInMilesFromDeviceLatitude:deviceLatitude deviceLongitude:deviceLongitude toTweetLatitude:tweetObject.latitude tweetLongitude:tweetObject.longitude] floatValue];
+        tweetObject.age = [NSNumber numberWithInt:fabs(tweetAgeInSeconds)];
+        //tweetObject.proximity = [[locationService getProximityInMilesFromDeviceLatitude:deviceLatitude deviceLongitude:deviceLongitude toTweetLatitude:tweetObject.latitude tweetLongitude:tweetObject.longitude] floatValue];
+        tweetObject.proximity = [self getProximityInMilesFromDeviceLatitude:deviceLatitude deviceLongitude:deviceLongitude toTweetLatitude:tweetObject.latitude tweetLongitude:tweetObject.longitude];
         // latitude and longitude are set above
         
         //add this tweet to the array of all tweets in this results feed
@@ -138,6 +139,15 @@
      }
     
     return testUMATweets;
+}
+
+- (NSNumber*) getProximityInMilesFromDeviceLatitude:(float)deviceLatitude deviceLongitude:(float)deviceLongitude toTweetLatitude:(NSNumber*)tweetLatitude tweetLongitude:(NSNumber*)tweeLongitude {
+    
+    //placeholder until this method is updated to actually calculate distance
+    NSNumber *distance = [NSNumber numberWithInt:5];
+    
+    return distance;
+    
 }
 
 @end

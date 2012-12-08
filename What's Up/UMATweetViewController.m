@@ -62,8 +62,8 @@
         
         handle.text = [self.detailItem valueForKey:@"username"];
         tweet.text = [self.detailItem valueForKey:@"text"];
-        proximity.text = [NSString stringWithFormat:@"%@", [self.detailItem valueForKey:@"proximity"]];
-        time.text = [NSString stringWithFormat:@"%@", [self.detailItem valueForKey:@"age"]];
+        proximity.text = [NSString stringWithFormat:@"%@ feet away", [self.detailItem valueForKey:@"proximity"]];
+        time.text = [NSString stringWithFormat:@"%@ seconds ago", [self.detailItem valueForKey:@"age"]];
         
     }
 }
