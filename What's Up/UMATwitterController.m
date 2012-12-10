@@ -69,7 +69,7 @@
         //---------------Latitude and Longitude-----------------------
         // latitude and longitude are nullable in the tweet result we get from Twitter, so we must check if they exist before trying to access them
 
-        if ([thisTweet objectForKey:@"coordinates"] == NULL) {
+        if ([thisTweet objectForKey:@"coordinates"] != [NSNull null]) {
             
             tweetObject.longitude = [NSNumber numberWithFloat:[[[[thisTweet objectForKey:@"coordinates"] objectForKey:@"coordinates"] objectAtIndex:1]floatValue]];
             tweetObject.latitude = [NSNumber numberWithFloat:[[[[thisTweet objectForKey:@"coordinates"] objectForKey:@"coordinates"] objectAtIndex:0]floatValue]];
@@ -141,7 +141,7 @@
     return testUMATweets;
 }
 
-- (NSNumber*) getProximityInMilesFromDeviceLatitude:(float)deviceLatitude deviceLongitude:(float)deviceLongitude toTweetLatitude:(NSNumber*)tweetLatitude tweetLongitude:(NSNumber*)tweeLongitude {
+- (NSNumber*)getProximityInMilesFromDeviceLatitude:(float)deviceLatitude deviceLongitude:(float)deviceLongitude toTweetLatitude:(NSNumber*)tweetLatitude tweetLongitude:(NSNumber*)tweeLongitude {
     
     //placeholder until this method is updated to actually calculate distance
     NSNumber *distance = [NSNumber numberWithInt:5];
