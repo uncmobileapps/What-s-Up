@@ -8,6 +8,9 @@
 
 #import "UMATweetViewController.h"
 #import "UMATweet.h"
+#import "UMAAppDelegate.h"
+#import "UMATwitterController.h"
+
 
 @interface UMATweetViewController ()
 - (void)configureView;
@@ -67,6 +70,8 @@
         
     }
 }
+
+
 
 - (void)viewDidUnload {
     
