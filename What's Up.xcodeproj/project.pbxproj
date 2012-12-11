@@ -30,6 +30,8 @@
 		83E7AB38166E660A009A5740 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83E7AB37166E660A009A5740 /* Accounts.framework */; };
 		83E7AB3A166E6733009A5740 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83E7AB39166E6733009A5740 /* Twitter.framework */; };
 		C522934D166EBF2500B1733B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C522934C166EBF2500B1733B /* MapKit.framework */; };
+		F647B82D1677E7DC00224463 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F647B82B1677E7DC00224463 /* Icon.png */; };
+		F647B82E1677E7DC00224463 /* Icon2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F647B82C1677E7DC00224463 /* Icon2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +70,8 @@
 		83E7AB37166E660A009A5740 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		83E7AB39166E6733009A5740 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		C522934C166EBF2500B1733B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		F647B82B1677E7DC00224463 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		F647B82C1677E7DC00224463 /* Icon2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon2x.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +169,8 @@
 				8336DA45164C5B1800C53180 /* What's Up */,
 				8336DA3E164C5B1800C53180 /* Frameworks */,
 				8336DA3C164C5B1800C53180 /* Products */,
+				F647B82B1677E7DC00224463 /* Icon.png */,
+				F647B82C1677E7DC00224463 /* Icon2x.png */,
 			);
 			sourceTree = "<group>";
 		};
@@ -275,6 +281,8 @@
 				8336DA56164C5B1800C53180 /* Default-568h@2x.png in Resources */,
 				8336DA59164C5B1800C53180 /* MainStoryboard.storyboard in Resources */,
 				4613176B1673FC40002A77C3 /* Coordinates.plist in Resources */,
+				F647B82D1677E7DC00224463 /* Icon.png in Resources */,
+				F647B82E1677E7DC00224463 /* Icon2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
