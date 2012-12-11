@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="12C3006" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1930"/>
     </dependencies>
@@ -78,16 +78,14 @@
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="3" contentMode="left" text="proximity" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lm6-XQ-Q2i">
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="69" id="sWJ-Mq-16E"/>
+                                                <constraint firstAttribute="height" constant="21" id="2v3-Z6-fCA"/>
+                                                <constraint firstAttribute="width" constant="95" id="URS-h8-wN2"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="13"/>
                                             <color key="textColor" red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="4" contentMode="left" text="how old" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="032-gJ-T6S">
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="21" id="6TF-qr-anf"/>
-                                            </constraints>
                                             <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="13"/>
                                             <color key="textColor" red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -103,7 +101,7 @@
                                     <constraint firstItem="qhx-ia-Iyz" firstAttribute="centerY" secondItem="iRD-yK-rqf" secondAttribute="centerY" type="default" id="L3y-4M-5wU"/>
                                     <constraint firstItem="Lm6-XQ-Q2i" firstAttribute="leading" secondItem="iRD-yK-rqf" secondAttribute="leading" constant="20" type="default" id="OFf-me-cAU"/>
                                     <constraint firstItem="ZBN-gn-cFk" firstAttribute="leading" secondItem="iRD-yK-rqf" secondAttribute="leading" constant="17" id="aD6-Yv-gOM"/>
-                                    <constraint firstAttribute="bottom" secondItem="032-gJ-T6S" secondAttribute="bottom" constant="6" id="l76-8Z-bgV"/>
+                                    <constraint firstAttribute="bottom" secondItem="Lm6-XQ-Q2i" secondAttribute="bottom" constant="6" id="heM-oz-JzJ"/>
                                     <constraint firstItem="032-gJ-T6S" firstAttribute="baseline" secondItem="Lm6-XQ-Q2i" secondAttribute="baseline" type="default" id="pH7-M3-yzp"/>
                                     <constraint firstItem="032-gJ-T6S" firstAttribute="top" secondItem="Lm6-XQ-Q2i" secondAttribute="top" type="default" id="wHd-RI-u4o"/>
                                 </constraints>

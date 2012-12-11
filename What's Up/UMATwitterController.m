@@ -97,7 +97,12 @@
         tweetObject.username = [[thisTweet objectForKey:@"user"] objectForKey:@"screen_name"];
         tweetObject.age = [NSNumber numberWithInt:fabs(tweetAgeInSeconds)];
         //tweetObject.proximity = [[locationService getProximityInMilesFromDeviceLatitude:deviceLatitude deviceLongitude:deviceLongitude toTweetLatitude:tweetObject.latitude tweetLongitude:tweetObject.longitude] floatValue];
-        tweetObject.proximity = [self getProximityInMilesFromDeviceLatitude:deviceLatitude deviceLongitude:deviceLongitude toTweetLatitude:tweetObject.latitude tweetLongitude:tweetObject.longitude];
+        
+        if ([tweetObject.latitude isEqualToNumber:@0.0f])
+            tweetObject.proximity = [NSNumber numberWithFloat:0.0];
+        else {
+            tweetObject.proximity = [self getProximityInMilesFromDeviceLatitude:deviceLatitude deviceLongitude:deviceLongitude toTweetLatitude:tweetObject.latitude tweetLongitude:tweetObject.longitude];
+        }
         // latitude and longitude are set above
         
         //add this tweet to the array of all tweets in this results feed
@@ -123,13 +128,17 @@
      
      // Initialize array to store tweets
      NSMutableArray *testUMATweets = [NSMutableArray array];
+    
+    NSDictionary *deviceLocationDict = [locationService currentLocation];
+    double deviceLatitude = [[deviceLocationDict objectForKey:@"latitude"] doubleValue];
+    double deviceLongitude = [[deviceLocationDict objectForKey:@"longitude"] doubleValue];
      
      for (NSDictionary *tweetasdict in testTweets) {
          UMATweet *tweet = [[UMATweet alloc] init];
          tweet.username = [tweetasdict objectForKey:@"username"];
          tweet.latitude = [tweetasdict objectForKey:@"latitude"];
          tweet.longitude = [tweetasdict objectForKey:@"longitude"];
-         tweet.proximity = [tweetasdict objectForKey:@"proximity"];
+         tweet.proximity = [self getProximityInMilesFromDeviceLatitude:deviceLatitude deviceLongitude:deviceLongitude toTweetLatitude:tweet.latitude tweetLongitude:tweet.longitude];
          tweet.tweetID = [tweetasdict objectForKey:@"tweetID"];
          tweet.text = [tweetasdict objectForKey:@"tweet"];
          tweet.age = [tweetasdict objectForKey:@"age"];
@@ -141,10 +150,27 @@
     return testUMATweets;
 }
 
-- (NSNumber*)getProximityInMilesFromDeviceLatitude:(float)deviceLatitude deviceLongitude:(float)deviceLongitude toTweetLatitude:(NSNumber*)tweetLatitude tweetLongitude:(NSNumber*)tweeLongitude {
+- (NSNumber*)getProximityInMilesFromDeviceLatitude:(float)deviceLatitude deviceLongitude:(float)deviceLongitude toTweetLatitude:(NSNumber*)tweetLatitude tweetLongitude:(NSNumber*)tweetLongitude {
     
     //placeholder until this method is updated to actually calculate distance
     NSNumber *distance = [NSNumber numberWithInt:5];
+    
+    // square root ((lat-lat)^2 + (long-long)^2)
+    
+    // take difference for lat and long
+    float latdiff = deviceLatitude - [tweetLatitude floatValue];
+    float longdiff = deviceLongitude - [tweetLongitude floatValue];
+    
+    // square differences
+    float latsquared = powf(latdiff, 2);
+    float longsquared = powf(longdiff, 2);
+    
+    // square root of sum of lat/long and muliply by conversion factor for decimal degrees to km to miles
+    float floatmiles = sqrtf(latsquared + longsquared) * (10000 / 90) * .621371;
+        
+    distance = [NSNumber numberWithFloat:[[NSString stringWithFormat:@"%.2f", floatmiles] floatValue]];
+    
+    
     
     return distance;
     

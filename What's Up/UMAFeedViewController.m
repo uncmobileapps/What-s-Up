@@ -101,7 +101,7 @@ NSArray *_objects;
     UMATweet *onetweet = _objects[indexPath.row];
     handle.text = onetweet.username;
     tweet.text = onetweet.text;
-    proximity.text = [NSString stringWithFormat:@"%@ feet away", onetweet.proximity];
+    proximity.text = [NSString stringWithFormat:@"%@ miles away", onetweet.proximity];
     time.text = [NSString stringWithFormat:@"%@ seconds ago", onetweet.age];
     
     return tweetCell;
