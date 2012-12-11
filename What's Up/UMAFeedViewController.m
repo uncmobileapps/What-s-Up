@@ -43,7 +43,7 @@ NSArray *_objects;
     twitterController = [((UMAAppDelegate *)[[UIApplication sharedApplication] delegate]) twitterController];
 
     // Get the current list of tweets
-    _objects = [twitterController getTweetsArray];
+    _objects = [twitterController getTestTweetsArray];
     
 }
 
@@ -99,7 +99,7 @@ NSArray *_objects;
 //    time.text = @"10PM";
     
     UMATweet *onetweet = _objects[indexPath.row];
-    handle.text = onetweet.username;
+    handle.text = [@"@" stringByAppendingString:onetweet.username];
     tweet.text = onetweet.text;
     proximity.text = [NSString stringWithFormat:@"%@ miles away", onetweet.proximity];
     time.text = [NSString stringWithFormat:@"%@ seconds ago", onetweet.age];

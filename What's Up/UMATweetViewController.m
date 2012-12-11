@@ -10,6 +10,7 @@
 #import "UMATweet.h"
 #import "UMAAppDelegate.h"
 #import "UMATwitterController.h"
+#import "UMAMapViewController.h"
 
 
 @interface UMATweetViewController ()
@@ -63,10 +64,13 @@
     
     if (self.detailItem) {
         
-        handle.text = [self.detailItem valueForKey:@"username"];
+        handle.text = [@"@" stringByAppendingString:[self.detailItem valueForKey:@"username"]];
         tweet.text = [self.detailItem valueForKey:@"text"];
         proximity.text = [NSString stringWithFormat:@"%@ miles away", [self.detailItem valueForKey:@"proximity"]];
         time.text = [NSString stringWithFormat:@"%@ seconds ago", [self.detailItem valueForKey:@"age"]];
+
+        [_map addAnnotation:_detailItem];
+        [UMAMapViewController zoomMapViewToFitAnnotations:_map animated:YES];
         
     }
 }

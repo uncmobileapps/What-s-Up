@@ -35,15 +35,25 @@
     // Do any additional setup after loading the view from its nib.
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    
+    [super viewDidAppear:animated];
+    
+    [self plotPoints];
+    
+}
 
 -(void)plotPoints {
     
     UMATwitterController *twitterController = [((UMAAppDelegate *)[[UIApplication sharedApplication] delegate]) twitterController];
-    NSArray *tweets = [twitterController getTweetsArray];
+    NSArray *tweets = [twitterController getTestTweetsArray];
     
     for (id<MKAnnotation> annotation in _mapView.annotations) {
         [_mapView removeAnnotation:annotation];
     }
+    
+    [_mapView addAnnotations:tweets];
+    [UMAMapViewController zoomMapViewToFitAnnotations:_mapView animated:YES];
     
 }
 #define MINIMUM_ZOOM_ARC 0.014 //approximately 1 miles (1 degree of arc ~= 69 miles)
@@ -54,7 +64,7 @@
 
 //size the mapView region to fit its annotations
 
-- (void)zoomMapViewToFitAnnotations:(MKMapView *)mapView animated:(BOOL)animated
++ (void)zoomMapViewToFitAnnotations:(MKMapView *)mapView animated:(BOOL)animated
 
 {
     
@@ -133,7 +143,7 @@
 
 {
     
-    [self zoomMapViewToFitAnnotations:self.mapView animated:animated];
+    [UMAMapViewController zoomMapViewToFitAnnotations:self.mapView animated:animated];
     
     //or maybe you would do the call above in the code path that sets the annotations array
     

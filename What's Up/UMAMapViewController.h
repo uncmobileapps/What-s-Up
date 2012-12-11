@@ -12,4 +12,6 @@
 @interface UMAMapViewController : UIViewController
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 
++ (void)zoomMapViewToFitAnnotations:(MKMapView *)mapView animated:(BOOL)animated;
+
 @end

@@ -19,5 +19,14 @@
 @synthesize age;
 @synthesize proximity;
 
+-(CLLocationCoordinate2D)coordinate {
+    
+    CLLocationCoordinate2D myCoords;
+    myCoords.latitude = self.latitude.doubleValue;
+    myCoords.longitude = self.longitude.doubleValue;
+    
+    return myCoords;
+    
+}
 
 @end

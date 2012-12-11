@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreLocation/CoreLocation.h>
 
 @interface UMATweet : NSObject
 
@@ -35,5 +36,7 @@ Accessing these:
 @property (nonatomic, strong) NSString *username;
 @property (nonatomic, strong) NSNumber *age;
 @property (nonatomic, strong) NSNumber *proximity;
+
+-(CLLocationCoordinate2D)coordinate;
 
 @end
